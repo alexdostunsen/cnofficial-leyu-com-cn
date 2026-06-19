@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alexdostunsen.github.io/cnofficial-leyu-com-cn/sitemap.xml
