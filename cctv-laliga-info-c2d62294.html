@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西甲直播 · 观赛索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f1f2f4;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.65;
+            color: #1e2329;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .page {
+            max-width: 820px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* hero 区 — 轻叙事开场 */
+        .hero {
+            margin-bottom: 2.8rem;
+            border-left: 4px solid #b0b8c0;
+            padding-left: 1.6rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 450;
+            letter-spacing: 0.01em;
+            color: #1b1f25;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .opening {
+            font-size: 1.05rem;
+            color: #464e5a;
+            max-width: 620px;
+        }
+
+        /* 叙事承接段落 */
+        .narrative {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 2rem 2.2rem;
+            margin-bottom: 2.4rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03), 0 6px 14px rgba(0,0,0,0.02);
+            border: 1px solid #e6e9ed;
+        }
+
+        .narrative p {
+            margin-bottom: 1.2rem;
+        }
+
+        .narrative p:last-child {
+            margin-bottom: 0;
+        }
+
+        .narrative a {
+            color: #2a5b8a;
+            text-decoration: none;
+            border-bottom: 1px solid #cbd6e2;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .narrative a:hover {
+            border-bottom-color: #2a5b8a;
+            color: #1b3d61;
+        }
+
+        /* 特点卡片区域 — 资料索引视角 */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.4rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .feature-card {
+            flex: 1 1 calc(50% - 0.7rem);
+            min-width: 200px;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.6rem 1.8rem;
+            border: 1px solid #dfe3e9;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02), 0 8px 18px rgba(0,0,0,0.02);
+            transition: box-shadow 0.15s ease;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04), 0 12px 22px rgba(0,0,0,0.03);
+        }
+
+        .feature-card h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #1b2a3c;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.2px;
+        }
+
+        .feature-card p {
+            font-size: 0.975rem;
+            color: #3f4855;
+        }
+
+        /* 温和结尾 + 提示区 */
+        .closing {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.8rem 2.2rem;
+            border: 1px solid #e2e7ed;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            margin-bottom: 2.2rem;
+        }
+
+        .closing p {
+            font-size: 0.975rem;
+            color: #333c49;
+            margin-bottom: 1rem;
+        }
+
+        .closing p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .closing a {
+            color: #2a5b8a;
+            text-decoration: none;
+            border-bottom: 1px solid #ccd7e5;
+            transition: border-color 0.2s;
+        }
+
+        .closing a:hover {
+            border-bottom-color: #2a5b8a;
+        }
+
+        .faq-mini {
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px dashed #d6dce4;
+        }
+
+        .faq-mini summary {
+            font-weight: 480;
+            cursor: default;
+            color: #2b3d52;
+            margin-bottom: 0.4rem;
+        }
+
+        .faq-mini details p {
+            margin: 0.5rem 0 0 0.3rem;
+            font-size: 0.92rem;
+            color: #485361;
+        }
+
+        .footnote {
+            text-align: left;
+            font-size: 0.85rem;
+            color: #7f8895;
+            padding: 0.5rem 0 0.2rem 0;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 580px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .narrative, .closing {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .features {
+                flex-direction: column;
+            }
+
+            .feature-card {
+                flex: 1 1 100%;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero {
+                padding-left: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 开场短句 hero -->
+    <div class="hero">
+        <h1>西甲直播 · 观赛索引</h1>
+        <p class="opening">从赛程整理到画面入口，一个安静的起点。</p>
+    </div>
+
+    <!-- 承接段落：资料整理与索引视角 -->
+    <div class="narrative">
+        <p>把注意力放在球场上之前，总需要先确认“从哪里看”这件事。过去几年，我习惯把各个直播入口、信号来源和赛程页做成一份私人的索引手册——不是陈列所有渠道，只是让每个比赛日少一点搜索的周折。</p>
+        <p>这份索引的核心，是直接指向 <a href="https://cctv-laliga.com">西甲直播</a> 的页面。它聚合了实时信号与官方信息，省去了在多个站点间跳转的步骤。对于只想安静看一场完整转播的人来说，一个可靠的入口比什么都重要。</p>
+        <p>我陆续整理过几版资料夹，最后发现最常被翻阅的还是那条直达链接——不需要解释，不需要多余步骤。这也是我把索引简化为一个页面的原因。</p>
+    </div>
+
+    <!-- 特点卡片：从信息索引展开 -->
+    <div class="features">
+        <div class="feature-card">
+            <h3>赛程与信号对照</h3>
+            <p>每轮西甲开球时间、对阵信息与直播状态并列呈现，方便提前标记想看的场次，避免临时寻找。</p>
+        </div>
+        <div class="feature-card">
+            <h3>统一入口参考</h3>
+            <p>经过筛选的直播页面，集中在同一个索引下。反复核对过可用性，减少误点与无效跳转。</p>
+        </div>
+        <div class="feature-card">
+            <h3>轻量归档习惯</h3>
+            <p>沿用资料整理中常用的卡片式归档，每一条信息都留有注释空间，便于后续补充或调整。</p>
+        </div>
+        <div class="feature-card">
+            <h3>离线可读方案</h3>
+            <p>页面本身纯文本为主，结构清晰。即使网络不佳，赛程时间和索引说明仍能正常浏览。</p>
+        </div>
+    </div>
+
+    <!-- 温和结尾 + 提示 + 小 FAQ 摘 -->
+    <div class="closing">
+        <p>这个页面不是门户，也不做推荐——它更接近一张随手写下的便签，上面只有一个地址，和一些整理过程中记下的备注。如果你也在寻找一条稳定的路径直达 <a href="https://cctv-laliga.com">西甲直播</a>，或许这份索引能帮你省掉几分钟的翻找。</p>
+
+        <div class="faq-mini">
+            <details>
+                <summary>▸ 关于索引的几点说明（FAQ 摘要）</summary>
+                <p>— 页面中所有赛程时间均以官方公布为准，索引仅作为参考，不保证实时更新。<br>
+                — 直播信号来源为第三方聚合，建议在开球前预留两分钟测试连通性。<br>
+                — 如果你有更稳定的入口或修正信息，欢迎通过备注形式留存，索引保持可编辑状态。</p>
+            </details>
+        </div>
+
+        <div class="footnote">
+            <p>资料整理 · 2025 · 仅作个人索引参考</p>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
