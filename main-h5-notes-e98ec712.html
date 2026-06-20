@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>问鼎H5 · 信息卡片介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f9f7f4;
+      font-family: "Noto Serif SC", "Source Han Serif CN", Georgia, "Times New Roman", serif;
+      color: #2c2a28;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    /* 主视觉 / hero 区域 —— 用卡片式的图文感 */
+    .hero-card {
+      background: #fffcf8;
+      border-radius: 24px;
+      padding: 2.2rem 2.5rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
+      margin-bottom: 2.5rem;
+      border: 1px solid #ebe7e1;
+      transition: box-shadow 0.2s;
+    }
+
+    .hero-card h1 {
+      font-size: 2.3rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #1f1e1b;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .hero-card h1 small {
+      font-size: 1.2rem;
+      font-weight: 350;
+      color: #7a756e;
+      display: block;
+      margin-top: 0.3rem;
+    }
+
+    .hero-card p {
+      font-size: 1.05rem;
+      color: #3d3a36;
+      margin-top: 1rem;
+      max-width: 70ch;
+    }
+
+    .hero-card .decor-line {
+      width: 50px;
+      height: 3px;
+      background: #cdc3b5;
+      margin: 1.2rem 0 0.8rem 0;
+      border-radius: 2px;
+    }
+
+    /* 用途卡片 —— 两栏网格 */
+    .purpose-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0 2.5rem 0;
+    }
+
+    .purpose-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.8rem 1.6rem 1.6rem 1.6rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      border: 1px solid #e5dfd8;
+    }
+
+    .purpose-card h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #2f2b26;
+      margin-bottom: 0.6rem;
+      border-left: 4px solid #b8ad9e;
+      padding-left: 0.8rem;
+    }
+
+    .purpose-card p {
+      font-size: 0.98rem;
+      color: #46423c;
+    }
+
+    .purpose-card .tag {
+      display: inline-block;
+      margin-top: 0.8rem;
+      background: #f0ebe4;
+      color: #4d473f;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 30px;
+      letter-spacing: 0.03em;
+    }
+
+    /* 适合人群 —— 横排卡片，带引用感 */
+    .audience-section {
+      margin: 2.2rem 0 2.8rem 0;
+    }
+
+    .audience-section h2 {
+      font-size: 1.5rem;
+      font-weight: 450;
+      color: #2c2824;
+      margin-bottom: 0.2rem;
+    }
+
+    .audience-section .sub {
+      color: #6f6961;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .audience-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .audience-item {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 1.2rem 1.6rem;
+      flex: 1 1 160px;
+      border: 1px solid #e2dbd2;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.01);
+    }
+
+    .audience-item .emoji-bg {
+      font-size: 1.4rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .audience-item h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #312d28;
+      margin: 0.2rem 0 0.2rem 0;
+    }
+
+    .audience-item p {
+      font-size: 0.9rem;
+      color: #53504a;
+    }
+
+    /* 引用块 / 提示框 —— 有叙述感 */
+    .pull-quote {
+      background: #f4efe9;
+      border-left: 6px solid #b7aa99;
+      padding: 1.6rem 2rem;
+      border-radius: 0 20px 20px 0;
+      margin: 2rem 0 2.2rem 0;
+      font-style: normal;
+    }
+
+    .pull-quote p {
+      font-size: 1.05rem;
+      color: #36322d;
+      line-height: 1.8;
+    }
+
+    .pull-quote .quote-source {
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      color: #7e766b;
+    }
+
+    /* 自然链接段落 —— 嵌入句子里 */
+    .link-paragraph {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.8rem 2rem;
+      border: 1px solid #e5dfd8;
+      margin: 1.8rem 0 2.5rem 0;
+      font-size: 1.02rem;
+    }
+
+    .link-paragraph a {
+      color: #6a5e4f;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #cfc3b3;
+      transition: color 0.15s;
+    }
+
+    .link-paragraph a:hover {
+      color: #3d362e;
+      text-decoration-color: #9a8b78;
+    }
+
+    /* 小字 / faq 摘要风格 */
+    .faq-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      background: #faf8f5;
+      border-radius: 16px;
+      padding: 1.2rem 1.8rem;
+      border: 1px solid #e7e0d7;
+      margin-top: 2rem;
+    }
+
+    .faq-note .item {
+      flex: 1 1 180px;
+    }
+
+    .faq-note .item strong {
+      font-weight: 500;
+      color: #2e2a25;
+      display: block;
+      font-size: 0.9rem;
+    }
+
+    .faq-note .item span {
+      font-size: 0.88rem;
+      color: #59544c;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e3dcd2;
+      margin: 1.8rem 0 1.2rem 0;
+      opacity: 0.6;
+    }
+
+    .footer-meta {
+      font-size: 0.8rem;
+      color: #8b847a;
+      text-align: center;
+      margin: 3rem 0 0.5rem 0;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+
+      .hero-card {
+        padding: 1.6rem 1.4rem;
+      }
+
+      .hero-card h1 {
+        font-size: 1.8rem;
+      }
+
+      .purpose-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .audience-flex {
+        flex-direction: column;
+      }
+
+      .pull-quote {
+        padding: 1.2rem 1.4rem;
+      }
+
+      .link-paragraph {
+        padding: 1.3rem 1.2rem;
+      }
+
+      .faq-note {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- hero 卡片 / 主视觉 -->
+    <div class="hero-card">
+      <h1>
+        问鼎H5
+        <small>信息卡片 · 用途速览</small>
+      </h1>
+      <div class="decor-line"></div>
+      <p>
+        一个关于 H5 场景、轻量活动页与内容聚合的站点。如果你正在寻找一种方式来快速确认这个网站能为你带来什么，下面的卡片或许会提供一些线索。
+      </p>
+    </div>
+
+    <!-- 用途卡片：两栏 -->
+    <div class="purpose-grid">
+      <div class="purpose-card">
+        <h3>活动落地页</h3>
+        <p>抽奖、报名、收集反馈、品牌传播——H5 页面常被用作轻量营销的载体。这里的案例与思路偏重于精简结构和快速适配。</p>
+        <span class="tag">交互示例</span>
+      </div>
+      <div class="purpose-card">
+        <h3>内容聚合页</h3>
+        <p>把图文、视频入口、外链整合到一个移动友好的页面中。适合作为专题汇总或个人项目索引。</p>
+        <span class="tag">信息卡片</span>
+      </div>
+    </div>
+
+    <!-- 适合人群 -->
+    <div class="audience-section">
+      <h2>谁可能用得上</h2>
+      <div class="sub">并非限定，只是一种观察</div>
+      <div class="audience-flex">
+        <div class="audience-item">
+          <div class="emoji-bg">📱</div>
+          <h4>运营/市场</h4>
+          <p>需要快速搭建活动页面，但不想从零开始写代码。</p>
+        </div>
+        <div class="audience-item">
+          <div class="emoji-bg">🧩</div>
+          <h4>个人创作者</h4>
+          <p>做作品集或小型专题页，希望结构干净、风格统一。</p>
+        </div>
+        <div class="audience-item">
+          <div class="emoji-bg">📐</div>
+          <h4>前端学习者</h4>
+          <p>参考 H5 页面布局与响应式思路，了解实际项目中的取舍。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 引用块 / 提示框 叙述感 -->
+    <div class="pull-quote">
+      <p>
+        一个网站的价值有时不在于它有多复杂，而在于它能否在几分钟内让人明白“这地方是做什么的”。这些卡片试图拆解出几个常见意图，但实际内容可能更零散——这没什么不好。
+      </p>
+      <div class="quote-source">—— 来自页面撰写的笔记</div>
+    </div>
+
+    <!-- 自然链接段落，嵌入问鼎H5 -->
+    <div class="link-paragraph">
+      <p>
+        如果你经常浏览 H5 相关的资源站或工具集，或许会发现 <a href="https://main-h5-wending.com">问鼎H5</a> 在风格上偏重文字与功能的平衡，没有太多装饰性元素。它的内容组织方式更接近一本翻开的笔记本：有案例、有片段、也有一些未完成的思路。对于想快速了解 H5 页面可能性的人来说，里面的一些页面也许能带来一点启发。
+      </p>
+    </div>
+
+    <!-- FAQ 摘要风格卡片 -->
+    <div class="faq-note">
+      <div class="item">
+        <strong>❔ 这个网站更新频繁吗？</strong>
+        <span>没有固定周期，内容会随着想法慢慢补充。</span>
+      </div>
+      <div class="item">
+        <strong>❔ 是否需要登录？</strong>
+        <span>目前所有页面直接可见，无需注册或登录。</span>
+      </div>
+      <div class="item">
+        <strong>❔ 可以复制使用吗？</strong>
+        <span>页面结构与样式可供参考，具体素材请留意来源。</span>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="footer-meta">
+      <span>信息卡片式介绍 · 基于问鼎H5 内容方向</span>
+    </div>
+  </div>
+</body>
+</html>
