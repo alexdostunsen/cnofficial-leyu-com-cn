@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 日常灵感与轻松时光</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fafaf8;
+      color: #2c2c2c;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-wrapper {
+      max-width: 720px;
+      width: 100%;
+      padding: 3.2rem 2rem 4rem;
+    }
+
+    /* 主视觉 — 简洁单图气氛 */
+    .hero {
+      margin-bottom: 3.5rem;
+      text-align: center;
+    }
+
+    .hero-figure {
+      background: #eae8e2;
+      border-radius: 32px;
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .hero-figure svg {
+      width: 60%;
+      max-width: 280px;
+      height: auto;
+      opacity: 0.75;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #1f1f1e;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #5a5a58;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* 标题层级 */
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin: 2.8rem 0 1.2rem;
+      letter-spacing: -0.01em;
+      color: #1f1f1e;
+      border-bottom: 1px solid #e1dfda;
+      padding-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      color: #2b2b2a;
+    }
+
+    /* 卡片网格 — 用途卡片 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin: 1rem 0 0.8rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.5rem 1.2rem 1.3rem;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02), 0 4px 12px rgba(0, 0, 0, 0.02);
+      transition: all 0.15s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      transform: translateY(-2px);
+    }
+
+    .card .emoji {
+      font-size: 1.7rem;
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: #4b4b49;
+      line-height: 1.5;
+      margin-top: 0.2rem;
+    }
+
+    /* 适合人群 — 标签式 */
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.4rem;
+      margin: 1.2rem 0 0.5rem;
+    }
+
+    .tag-item {
+      background: #f0efea;
+      border-radius: 40px;
+      padding: 0.3rem 1.2rem;
+      font-size: 0.95rem;
+      color: #2c2c2a;
+      letter-spacing: 0.01em;
+    }
+
+    /* 自然链接段落 */
+    .link-sentence {
+      background: #f6f5f1;
+      border-radius: 24px;
+      padding: 1.8rem 2rem;
+      margin: 2.6rem 0 1.2rem;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #2c2c2a;
+    }
+
+    .link-sentence a {
+      color: #1b4f3d;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #bccfc6;
+      transition: border-color 0.2s, color 0.15s;
+    }
+
+    .link-sentence a:hover {
+      color: #0d3a2b;
+      border-bottom-color: #1b4f3d;
+    }
+
+    /* 提示 / FAQ 摘要 */
+    .note-block {
+      background: #ffffff;
+      border: 1px solid #e6e3dc;
+      border-radius: 20px;
+      padding: 1.6rem 1.8rem;
+      margin: 2.2rem 0 1rem;
+    }
+
+    .note-block dt {
+      font-weight: 500;
+      margin-top: 0.8rem;
+      color: #1f1f1e;
+    }
+
+    .note-block dt:first-of-type {
+      margin-top: 0;
+    }
+
+    .note-block dd {
+      margin: 0.25rem 0 0.8rem 0.6rem;
+      color: #4e4e4b;
+      font-size: 0.95rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e1dfda;
+      margin: 2.2rem 0 1.2rem;
+    }
+
+    .footer-note {
+      font-size: 0.85rem;
+      color: #8b8b87;
+      text-align: center;
+      margin-top: 3rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 560px) {
+      .page-wrapper {
+        padding: 2rem 1.2rem 3rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .link-sentence {
+        padding: 1.4rem 1.2rem;
+      }
+      .note-block {
+        padding: 1.2rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- 主视觉 -->
+    <div class="hero">
+      <div class="hero-figure">
+        <svg viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="22" width="100" height="36" rx="18" fill="#d6d2c7" />
+          <circle cx="35" cy="40" r="6" fill="#fafaf8" />
+          <circle cx="60" cy="40" r="6" fill="#fafaf8" />
+          <circle cx="85" cy="40" r="6" fill="#fafaf8" />
+          <path d="M5 48 L10 48 L10 52 L5 52 Z" fill="#c6c0b3" />
+          <path d="M110 48 L115 48 L115 52 L110 52 Z" fill="#c6c0b3" />
+          <rect x="25" y="12" width="8" height="12" rx="4" fill="#c6c0b3" />
+          <rect x="87" y="12" width="8" height="12" rx="4" fill="#c6c0b3" />
+        </svg>
+      </div>
+      <h1>爱游戏 · 日常陪伴</h1>
+      <p>轻量、自在、不累赘。把游戏当作生活里的一抹亮色。</p>
+    </div>
+
+    <!-- 用途卡片区 -->
+    <h2>它用来做什么</h2>
+    <div class="card-grid">
+      <div class="card">
+        <span class="emoji">☕</span>
+        <h3>短暂抽离</h3>
+        <p>通勤、午休、睡前，几分钟就能进入另一个小世界。不用大块时间，也能换换心情。</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🧩</span>
+        <h3>思维热身</h3>
+        <p>解谜、策略、反应类游戏，让大脑保持灵活。玩一局就像给思考做一套广播体操。</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🤝</span>
+        <h3>轻社交</h3>
+        <p>和朋友一起玩，或者看看别人的有趣思路。游戏也是一种不必太正式的分享话题。</p>
+      </div>
+    </div>
+
+    <!-- 适合人群（标签式） -->
+    <h2>适合什么样的人</h2>
+    <div class="tag-list">
+      <span class="tag-item">上班族 · 碎片时间玩家</span>
+      <span class="tag-item">学生 · 课间放松派</span>
+      <span class="tag-item">休闲玩家 · 不肝不氪</span>
+      <span class="tag-item">怀旧党 · 偏爱简单乐趣</span>
+      <span class="tag-item">陪娃家长 · 一起试试</span>
+    </div>
+
+    <!-- 自然链接段落（核心） -->
+    <div class="link-sentence">
+      如果你也喜欢不费力气的游戏时光，不妨去 <a href="https://dh-igame.com">爱游戏</a> 看看那里有哪些轻巧的小惊喜。
+      没有排名压力，也没有冗长教程，更多的是随手打开的趣味和一点点挑战。
+    </div>
+
+    <!-- FAQ 摘要 / 提示区块 -->
+    <h2>一些你可能想问的</h2>
+    <div class="note-block">
+      <dl>
+        <dt>需要注册或下载吗？</dt>
+        <dd>大部分内容直接在线就能参与，不用安装额外软件，也无需创建账号。打开页面就能开始。</dd>
+        <dt>游戏时长大概多长？</dt>
+        <dd>从几十秒到十几分钟不等，可以随时暂停或退出。适合见缝插针地玩。</dd>
+        <dt>内容会不会太幼稚？</dt>
+        <dd>整体偏轻松，但题材多样——有策略、观察、文字、反应类，不同年龄都能找到自己舒服的节奏。</dd>
+        <dt>有广告或内购吗？</dt>
+        <dd>保持简单。大部分体验没有弹窗广告或强制付费，可以安心探索。</dd>
+      </dl>
+    </div>
+
+    <!-- 一个额外的自然引用（强化链接但不重复句子结构） -->
+    <p style="margin: 1.8rem 0 0.2rem; color: #4e4e4b; font-size: 0.95rem;">
+      顺带一提，如果你喜欢这篇文章里的调性，那么「<a href="https://dh-igame.com" style="color: #1b4f3d; text-decoration: none; border-bottom: 1px solid #bccfc6; font-weight: 500;">爱游戏</a>」大概也会合你的口味。它不追求宏大，只在意日常里那一点点游戏感。
+    </p>
+
+    <hr>
+    <div class="footer-note">
+      记录于一个普通午后 · 保持好奇，保持轻松
+    </div>
+  </div>
+</body>
+</html>
